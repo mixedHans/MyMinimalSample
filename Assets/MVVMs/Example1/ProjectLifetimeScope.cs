@@ -13,7 +13,6 @@ public class ProjectLifetimeScope : LifetimeScope
 
         builder.Register<ApplicationStateDatabase>(Lifetime.Singleton);
         builder.Register<ApplicationStateManager>(Lifetime.Singleton);
-        builder.Register<StateTransitionManager>(Lifetime.Singleton);
 
         builder.RegisterBuildCallback(container => 
         { 
@@ -25,11 +24,11 @@ public class ProjectLifetimeScope : LifetimeScope
     {
         var appStateManager = Container.Resolve<ApplicationStateManager>();
         appStateManager.SetState(ApplicationStateKey.Example);
-        await Task.Delay(5000);
+        await Task.Delay(2000);
         appStateManager.SetState(ApplicationStateKey.AnotherExample);
-        await Task.Delay(5000);
+        await Task.Delay(2000);
         appStateManager.SetState(ApplicationStateKey.YetAnotherExample);
-        await Task.Delay(5000);
+        await Task.Delay(2000);
         appStateManager.SetState(ApplicationStateKey.Example);
     }
 }
